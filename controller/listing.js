@@ -24,7 +24,7 @@ module.exports.createListing = async (req, res, next) => {
      req.flash("success", "your new listing was created!");
      res.redirect("/listing")
      }
-
+ 
 
 module.exports.showList = async (req,res) => {
     const {id} = req.params;

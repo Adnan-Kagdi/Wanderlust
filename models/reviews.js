@@ -23,7 +23,7 @@ const reviewsSchema = new Schema({
     comments: {
         type:String,
         required:true
-    },
+    }, 
 
     createdAt: {
         type:Date,

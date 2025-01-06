@@ -18,7 +18,7 @@ router.post("/",
     wrapAsync(listingController.createListing)
 )
 
-
+ 
 
 //Show Route
 router.get("/:id", validateListing, wrapAsync(listingController.showList) )

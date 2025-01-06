@@ -18,7 +18,7 @@ const userRouter = require("./routes/user.js")
 const MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust"
 
 const sessionOptions = {
-    secret: "mySuperSecretString",
+    secret: "mySuperSecretString", 
     resave: false,
     saveUninitialized: true,
     cookie: {

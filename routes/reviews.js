@@ -22,7 +22,7 @@ router.post(
 
     console.log("Review Author ID:", review.author.id);
     console.log("Current User ID:", res.locals.currUser._id);
-    
+     
 
     await newReview.save()
     await listings.save() 
