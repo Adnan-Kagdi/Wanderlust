@@ -34,7 +34,7 @@ module.exports.showList = async (req,res) => {
        path: "reviews",
      populate: {
        path: "author"
-   }
+   } 
    })
    .populate("owner");
 
