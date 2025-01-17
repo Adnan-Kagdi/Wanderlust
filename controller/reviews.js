@@ -8,11 +8,7 @@ const ExpressError = require("../utils/ExpressError.js");
     let newReview = new reviews(req.body.reviews);
     newReview.author = req.user.id
     listings.reviews.push(newReview);
-    console.log(newReview);
-
-    console.log("Review Author ID:", review.author.id);
-    console.log("Current User ID:", res.locals.currUser._id);
-     
+    console.log(newReview);     
 
     await newReview.save()
     await listings.save() 

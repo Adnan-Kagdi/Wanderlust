@@ -9,7 +9,8 @@
   method="post" 
   action="/listing/<%= edit.id %>?_method=PUT"  
   novalidate 
-  class="needs-validation">
+  class="needs-validation"
+  enctype="multipart/form-data">
 
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -17,19 +18,41 @@
         <div class="valid-feedback">title looks good!</div> 
       </div>
 
-    <div class="mb-3">
-        <label for="image" class="form-label">Image Link</label>
-        <input value="<%= edit.image %>" name="listing[image]" class="form-control" required>
-        <div class="invalid-feedback">image link should be needed</div> 
+      <div class="mb-3">
+        <select class="form-select form-select-lg selectCtgr mb-3" name="listing[category]" aria-label="Large select example" required >
+          <option selected value="">Select your category</option>
+          <option value="Trending" name="Trending">Trending</option>
+          <option value="Rooms" name="Rooms">Rooms</option>
+          <option value="Iconic-Cities" name="Iconic Cities">Iconic Cities</option>
+          <option value="Mountains" name="Mountains">Mountains</option>
+          <option value="Castles" name="Castles">Castles</option>
+          <option value="Amazing-Pools" name="Amazing Pools">Amazing Pools</option>
+          <option value="Camping" name="Camping">Camping</option>
+          <option value="Farms" name="Farms">Farms</option>
+          <option value="Arctic" name="Arctic">Arctic</option>
+          <option value="Domes" name="Domes">Domes</option>
+          <option value="Boats" name="Boats">Boats</option>
+        </select>
       </div>
+
 
     <div class="mb-3">
         <label for="description" class="form-label"> Description </label>
-        <textarea rows="4" cols="20" name="listing[description]" type="text" class="form-control" required><%= edit.description %></textarea>
+        <textarea rows="2" cols="20" name="listing[description]" type="text" class="form-control" required><%= edit.description %></textarea>
         <div class="invalid-feedback">define your description</div> 
       </div>
 
-      <div class="row">
+      <div class="mb-3">
+        <label for="image" class="form-label">Original listing image</label> <br>
+        <img src="<%= originalImageUrl %>">
+      </div>
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload new image</label>
+        <input name="listing[image]" type="file" class="form-control">
+      </div>
+
+      <div class="row">    
 
     <div class="mb-3 col-md-4">
         <label for="price" class="form-label"> Price </label>
@@ -37,19 +60,20 @@
         <div class="invalid-feedback">enter a valid price</div> 
       </div>
 
-    <div class="mb-3 col-md-8">
+      <div class="mb-3 col-md-8">
+        <label for="country" class="form-label"> country </label>
+        <input value="<%= edit.country %>" name="listing[country]" type="text" class="form-control" required>
+        <div class="invalid-feedback">country name should be valid</div> 
+      </div>
+
+      </div>
+
+      <div class="mb-3">
         <label for="location" class="form-label"> Location </label>
         <input value="<%= edit.location %>" name="listing[location]" type="text" class="form-control" required>
         <div class="invalid-feedback">location should be valid</div> 
       </div>
 
-      </div>
-
-    <div class="mb-3">
-        <label for="country" class="form-label"> country </label>
-        <input value="<%= edit.country %>" name="listing[country]" type="text" class="form-control" required>
-        <div class="invalid-feedback">country name should be valid</div> 
-      </div>
 
     <button class="btn btn-dark mb-5 mt-4 edit-btn">Edit</button>
   

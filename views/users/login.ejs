@@ -1,24 +1,90 @@
-<% layout("/Layouts/boilerplate") %>
-<h2 class="col-6 offset-3">Login</h2> <br>
+<div class="background">
+  <% layout("/Layouts/boilerplate") %>
+</div>
 
-<div class="col-6 offset-3">
-<form method="post" action="/login" class="needs-validation" novalidate>
- <label for="username" class="form-label">Username</label>
- <input 
-   name="username"
-   id="username"
-   class="form-control"
-   required> 
- <div class="valid-feedback">looks good!</div>
 
-   <label for="password" class="form-label">password</label>
- <input 
-   name="password"
-   class="form-control"
-   id="password"
-   type="password"
-   required> 
-<br>
-   <button class="btn btn-outline-success">login</button>
-</form>
-</div> 
+<style>
+  .loginBox {
+    position: relative;
+    border: black;
+    z-index: 1;
+    cursor: pointer;
+    height: 25rem;
+    margin-top: 4rem !important;
+    width: 45rem;
+    margin: auto;
+    padding-top: 1rem;
+    background-color: rgba(194, 194, 194, 0.117);
+    border-radius: 1rem;
+    box-shadow: 1px 2px 12px rgba(128, 128, 128, 0.751);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .loginBox:hover {
+    opacity: 1;
+    background-color: rgba(27, 27, 27, 0.064);
+    box-shadow: 30px 30px 55px rgba(128, 128, 128, 0.36);
+  }
+
+  /* .loginBox:hover ~ *{
+    opacity: 0.5
+  } */
+
+  .lgn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lgn h5 {
+    color: rgba(82, 81, 81, 0.736);
+  }
+
+  .loginBtn {
+    background-color: rgba(201, 201, 201, 0.402);
+    color: black;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(191, 190, 190, 0.675);
+  }
+
+  .loginBtn:hover {
+    background-color: rgba(49, 49, 49, 0.173);
+    color: rgba(0, 0, 0, 0.721)
+  }
+
+  .login-inp:hover {
+    border: black;
+    box-shadow: 2px 2px 12px rgba(128, 128, 128, 0.554);
+  }
+</style>
+
+<div class="loginBox col-6 offset-3">
+  <div class="col-6 offset-3">
+    <form method="post" action="/login" class="needs-validation" novalidate>
+      <div class="lgn">
+        <i class="fa-regular fa-compass"></i>
+        &nbsp; &nbsp; <h5>Wanderlust</h5>
+      </div>
+      <h4 class="mt-3 mb-4">Log in</h4>
+      <label for="username" class="form-label ">Username</label>
+      <input name="username" id="username" class="form-control login-inp" required>
+      <div class="valid-feedback">looks good!</div>
+
+      <label for="password" class="form-label">password</label>
+      <input name="password" class="form-control login-inp" id="password" type="password" required>
+      <br>
+      <button class="btn btn-outline-dark loginBtn">login</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.loginBox').addEventListener('mouseenter', () => {
+    document.querySelector('.background').style.opacity = '0';
+  });
+
+  document.querySelector('.loginBox').addEventListener('mouseleave', () => {
+    document.querySelector('.background').style.opacity = '1';
+  });
+</script>

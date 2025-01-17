@@ -1,8 +1,13 @@
-<% layout("/Layouts/boilerplate")%>
+ <% layout("/Layouts/boilerplate")%>
+
  <div class="row">
     <div class="col-8  offset-2">
 <body>
-    <form method="post" action="/listing" novalidate class="needs-validation">
+    <form 
+       method="post" 
+       action="/listing" 
+       novalidate class="needs-validation" 
+       enctype="multipart/form-data">
 
        <h2>Mention your</h2>
        <br>
@@ -12,16 +17,33 @@
         placeholder="Add a catchy title" name="listing[title]" class="form-control" required> 
         <div class="valid-feedback">Title looks good!</div>
        </div>
-
-       <div class="mb-3">
-        <label  for ="image" class="form-label">Image</label>
-        <input placeholder="Enter image URL/Link" name="listing[image]" class="form-control">
-       </div>
+   
+      <div class="mb-3">
+        <select class="form-select form-select-lg selectCtgr mb-3" name="listing[category]" aria-label="Large select example" required >
+          <option selected value="" >Select the category</option>
+          <option value="Trending" name="Trending">Trending</option>
+          <option value="Rooms" name="Rooms">Rooms</option>
+          <option value="Iconic-Cities" name="Iconic-Cities">Iconic Cities</option>
+          <option value="Mountains" name="Mountains">Mountains</option>
+          <option value="Castles" name="Castles">Castles</option>
+          <option value="Amazing-Pools" name="Amazing-Pools">Amazing Pools</option>
+          <option value="Camping" name="Camping">Camping</option>
+          <option value="Farms" name="Farms">Farms</option>    
+          <option value="Arctic" name="Arctic">Arctic</option>
+          <option value="Domes" name="Domes">Domes</option>
+          <option value="Boats" name="Boats">Boats</option>
+        </select>
+      </div>
 
        <div class="mb-3">
         <label for="description" class="form-label">description</label>
-        <textarea rows="5" cols="20" name="listing[description]" class="form-control" required></textarea>
+        <textarea rows="2" cols="20" name="listing[description]" class="form-control" required></textarea>
         <div class="invalid-feedback">define your description</div> 
+      </div>
+
+      <div class="mb-3">
+        <label  for ="image" class="form-label">Upload Listing Image</label>
+        <input name="listing[image]" type="file" class="form-control" required>
       </div>
 
     <div class="row">
@@ -32,19 +54,20 @@
         <div class="invalid-feedback">enter a valid price</div> 
       </div>
 
-       <div class="mb-3 col-md-8">
-        <label for="location" class="form-label">Location</label>
-        <input placeholder="Jaipur, Rajasthan" name="listing[location]" class="form-control" required>
-        <div class="invalid-feedback">location should be valid</div> 
-      </div>
-
-    </div>
-
-       <div class="mb-3">
+      <div class="mb-3 col-md-8">
         <label for="country" class="form-label">Country</label>
         <input placeholder="India" name="listing[country]" class="form-control" required>
         <div class="invalid-feedback">country name should be valid</div> 
       </div>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input placeholder="Jaipur, Rajasthan" name="listing[location]" class="form-control" required>
+      <div class="invalid-feedback">location should be valid</div> 
+    </div>
+      
         
         <button class="btn btn-dark add-btn  mb-4 mt-4">Create</button>
     </form>

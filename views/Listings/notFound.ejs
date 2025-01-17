@@ -1,0 +1,51 @@
+<% layout("/Layouts/boilerplate") %>
+
+<style>
+
+    .notFoundBox{
+        margin-top:10rem;
+        margin-left:28rem;
+    }
+
+    .returnTo{
+        margin-left:1.4rem;
+    }
+
+    .loginMsg {
+        margin-top:5rem;
+        box-shadow:10rem 20rem 35rem rgba(136, 135, 135, 0.397) ;
+    }
+    .l-msg{
+        margin-left:1rem;
+    }  
+    
+</style>
+
+
+<div class="notFoundBox">
+
+<div class="message">
+<h2>Currently not existed!</h2>
+</div> 
+
+<div class="returnTo">
+<h4 class="mt-3" >Tap <b><a href="/listing">Explore</a></b> to get back!</h4> 
+</div>
+
+<% if(!currUser) { %>
+    <div class="loginMsg">
+      <h6 class="ms-5">
+        <b class="l-msg">You are not logged in</b> 
+        <d style="font-size: 1.2rem;">&#128578;</d> 
+      </h6>
+      <h5>Please <b><a href="/login">login</a></b>
+         for better experience!
+      </h5>
+    </div>
+<% } %>
+
+</div>
+
+
+
+

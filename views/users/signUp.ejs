@@ -1,20 +1,81 @@
 <% layout("/Layouts/boilerplate") %>
-<h2 class="col-6 offset-3">SignUp on wanderlust</h2> <br>
 
-<div class="col-6 offset-3">
+<style>
+
+  .signUpBox{
+    border: black;
+    height: 30rem;
+    margin-top:4rem !important;
+    width:45rem;
+    margin:auto;
+    padding-top:1rem;
+    background-color: rgba(194, 194, 194, 0.117);
+    border-radius: 1rem;
+    box-shadow: 1px 2px 12px rgba(128, 128, 128, 0.751);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .signUpBox:hover{
+    opacity: 1;
+    background-color: rgba(27, 27, 27, 0.064) !important;
+    box-shadow: 30px 30px 55px rgba(128, 128, 128, 0.36) !important;
+  }
+
+  .signUpBox:hover ~ *{
+    opacity: 0.5
+    
+  }
+
+  .sgn{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sgn h5 {
+    color:rgba(82, 81, 81, 0.736);
+  }
+
+  .signUpBtn{
+    background-color: rgba(201, 201, 201, 0.402);
+    color:black;
+    border:none;
+    box-shadow: 2px 2px 10px rgba(191, 190, 190, 0.675);
+  }
+
+  .signUpBtn:hover{
+    background-color: rgba(49, 49, 49, 0.173);
+    color:rgba(0, 0, 0, 0.721)
+  }
+
+ .signup-inp input:hover{
+  border: black;
+  box-shadow: 2px 2px 12px rgba(128, 128, 128, 0.554);
+}
+
+</style>
+
+<div class="signUpBox col-6 offset-3">
+<div class="col-6 offset-3 signup-inp">
 <form method="post" action="/signUp" class="needs-validation" novalidate>
+  <div class="sgn">
+    <i class="fa-regular fa-compass"></i>
+     &nbsp; &nbsp; <h5>Wanderlust</h5>
+  </div> 
+  <h4 class="mt-3 mb-4">Sign Up</h4>
  <label for="username" class="form-label">Username</label>
  <input 
    name="username"
    id="username"
-   class="form-control"
+   class="form-control signup-inp"
    required> 
  <div class="valid-feedback">looks good!</div>
 
  <label for="email" class="form-label">email</label>
  <input 
    name="email"
-   class="form-control"
+   class="form-control signup-inp"
    id="email"
    type="email"
    required> 
@@ -22,11 +83,12 @@
    <label for="password" class="form-label">password</label>
  <input 
    name="password"
-   class="form-control"
+   class="form-control signup-inp"
    id="password" 
    type="password"
    required> 
 <br>
-   <button class="btn btn-outline-success">SignUp</button>
+   <button class="btn btn-outline-dark signUpBtn mt-1">SignUp</button>
 </form>
+</div>
 </div>

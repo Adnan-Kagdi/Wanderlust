@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,19 +8,36 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo")
 const flash = require("connect-flash")
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js") 
 
-const listingsRouter = require("./routes/listings.js")
-const reviewsRouter = require("./routes/reviews.js")
-const userRouter = require("./routes/user.js")
+const listingsRouter = require("./routes/listings.js");
+const reviewsRouter = require("./routes/reviews.js");
+const userRouter = require("./routes/user.js");
+const categoryRouter = require("./routes/category.js")
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust"
+
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust"
+const dbURL = process.env.ATLASDB_URL
+
+const store = MongoStore.create({
+    mongoUrl: dbURL,
+    crypto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+    console.log("ERROR in MONGO SESSION STORE", err)
+})
 
 const sessionOptions = {
-    secret: "mySuperSecretString", 
+    store,
+    secret: process.env.SECRET, 
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -35,10 +54,10 @@ main()
 })
 .catch((err) => {
     console.log(err);
-})
+}) 
 
-async function main(){
-    await mongoose.connect(MONGO_URL);
+async function main(){ 
+    await mongoose.connect(dbURL);
 }
 
 
@@ -48,11 +67,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.engine("ejs", ejsMate)
-
-
-app.get("/", (req,res) => {
-    res.send("Hi, Iam Root!")
-})
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -73,7 +87,8 @@ app.use((req, res, next) => {
 
 app.use("/listing", listingsRouter);
 app.use("/listing/:id/reviews", reviewsRouter );
-app.use("/", userRouter)
+app.use("/", userRouter);
+app.use("/", categoryRouter);
 
 
 app.all("*", (req, res, next) => {
@@ -86,7 +101,7 @@ app.use((err, req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    res.send("something went wrong!")
+    res.send("something went wrong!");
 })
 
 app.listen(8080, () => {

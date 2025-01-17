@@ -1,0 +1,90 @@
+<% layout("/Layouts/boilerplate") %>
+
+  <style>
+    .listing-card:hover {
+      transform: scale(1.08);
+      box-shadow: 40px 80px 120px rgba(174, 174, 174, 0.546);
+      border-radius: 1rem;
+
+      .sub-list {
+        display: inline-block;
+        transition: bottom 1s ease-in-out;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .listing-card:hover .card-body {
+      bottom: 0;
+    }
+
+    .tax-Toggle {
+      margin-left: 2rem;
+      margin-top: 2rem;
+    }
+
+    .heading {
+      color: rgba(128, 128, 128, 0.657)
+    }
+
+    .card-body {
+      position: relative;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      transition: bottom 0.3s ease;
+    }
+
+    /* .category-d{
+  position:fixed;
+  margin-left:20rem;
+  margin-bottom: 7rem !important;
+} */
+  </style>
+
+  <div id="filters">
+    <div>
+      <br><br>
+      <h3 class="heading">Here is your selected listings!</h3>
+    </div>
+    <div class="tax-Toggle">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-5">
+
+    <% for(let list of lists){ %>
+      <a href="/listing/<%= list.id %>" class="listing-link">
+        <div class="card col listing-card ms-1">
+          <img src="<%= list.image.url %>" class="card-img-top" alt="listing_image">
+
+          <!-- due to small styling, layout are little bit changed in this -->
+          <b class="ms-2 mt-1">
+            <%= list.title %>
+          </b>
+          <d class="price-list ms-2">&#8377; <%= list.price.toLocaleString("en-IN") %> / night <i class="tax-info">
+                &nbsp; &nbsp; <b>+18% GST </b> </i></d>
+
+
+          <div class="card-body ">
+            <p class="card-text">
+              <d class="sub-list">Created by : <b>
+                  <%= list.owner.username %>
+                </b></d> <br>
+              <b>
+                <d class="sub-list">
+                  <%= list.category %>
+                </d>
+              </b>
+            </p>
+          </div>
+        </div>
+      </a>
+      <% } %>
+  </div>

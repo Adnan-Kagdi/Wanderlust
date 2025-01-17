@@ -1,13 +1,60 @@
+<style>
+   .alert-sc{
+      background-color: rgba(0, 128, 0, 0.152);
+      color: rgba(0, 128, 0, 0.829);
+      box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.361);
+      border:none;
+      transition: background-color  0.1s ease-in-out 
+   }
+
+   .alert-sc:hover{
+      background-color: rgba(0, 128, 0, 0.194);
+      color:green;
+   }
+
+   .alert-er{
+      background-color: rgba(234, 154, 154, 0.166);
+      box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.361);
+      color:rgba(255, 0, 0, 0.708);
+      border:none;
+      transition: background-color 0.1s ease-in-out 
+   }
+
+   .alert-er:hover{
+      background-color: rgba(255, 0, 0, 0.129);
+      color:red;
+   }
+</style>
+
 <% if(success && success.length){ %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
-     <%= success %>
+    <div class="alert alert-sc alert-success alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+   <%= success %>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
  <% } %>
 
  <% if(error && error.length){ %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
-     <%= error %>
+    <div class="alert alert-er alert-danger alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+    <%= error %> 
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
  <% } %> 
+
+
+ <!-- <script>
+   const successEl = document.getElementsByClassName("alert-sc");
+   const visibilityTime = 2000;
+   successEl.style.display = inline-block;
+
+   setTimeout(() => {
+      successEl.style.display = none;
+   }, visibilityTime)
+
+   const errEl = document.getElementsByClassName("alert-er");
+   errEl.style.display = inline-block;
+
+   setTimeout(() => {
+      errEl.style.display = none;
+   }, visibilityTime)
+
+ </script> -->

@@ -1,7 +1,41 @@
-<% layout("/Layouts/boilerplate.ejs") %>
+<style>
+  .row {
+    display: flex;
+    margin-top: 14rem;
+    margin-left: 30rem;
+  }
 
-<div class="row">
-<div class="alert alert-danger col-6 offset-3 mt-3 " role="alert">
-    <p class="alert-heading"><%= message %> </p>
+  .errHead h2 {
+    color: red
+  }
+
+  .explore {
+    margin-top: 2rem;
+  }
+</style>
+
+<div class="container">
+  <% layout("/Layouts/boilerplate.ejs") %>
+</div>
+
+<div class="row err-msg">
+
+  <div class="errHead">
+    <h3>Heyy buddy!! your</h3>
+    <b>
+      <h2> page not found &#128533;</h2>
+    </b>
   </div>
-</div> 
+
+  <div class="explore">
+    <h5>Click on <a href="/listing"><b>Explore</b></a></h5>
+    <h6>to go back to your listings!</h6>
+  </div>
+
+  <% if(!currUser) { %>
+    <div class="lgn mt-4">
+      <h5>and please <a href="/login"><b>Login</b></a> for better experience!</h5>
+    </div>
+    <% } %>
+
+</div>
