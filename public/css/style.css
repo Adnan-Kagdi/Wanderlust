@@ -229,6 +229,7 @@ body {
 
 
 @media (max-width: 1180px) {
+    
     .srcNav {
         margin: 1rem !important;
     }
@@ -242,7 +243,7 @@ body {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 667px) {
 
     .showCard {
         width: 20rem !important;
@@ -259,7 +260,7 @@ body {
         height: 0.8rem !important;
         width: 3.5rem !important;
         border: 2px solid grey;
-        margin-left: 21rem !important;
+        margin-right: 14rem !important;
     }
 
     .tax-Toggle input {
@@ -367,11 +368,11 @@ body {
     #map {
         height: 20rem !important;
         width: 18rem !important;
-        border: 1px solid rgba(125, 121, 121, 0.741) !important;
     }
     
     .mapBox{
         margin-right: 4rem !important;
+        margin: auto !important;
     }
 
 }
