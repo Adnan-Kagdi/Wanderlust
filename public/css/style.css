@@ -365,9 +365,9 @@ body {
     } */
 
 
-    #map {
-        height: 20rem !important;
-        width: 18rem !important;
+    #map { 
+        height: 22rem !important;
+        width: 24rem !important;
     }
     
     .mapBox{
